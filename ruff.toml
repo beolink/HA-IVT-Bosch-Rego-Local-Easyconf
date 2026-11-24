@@ -1,0 +1,19 @@
+target-version = "py312"
+line-length = 120
+
+[lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+ignore = [
+    # Home Assistant entity classes set attributes rather than properties.
+    "RUF012",
+    # The tables of names, roles and explanations read best one row a line.
+    "E501",
+]
+
+[lint.isort]
+force-sort-within-sections = true
+combine-as-imports = true
+
+[lint.per-file-ignores]
+# Swedish and English prose for people: real minus signs and dashes.
+"custom_components/*/explanations.py" = ["RUF001"]

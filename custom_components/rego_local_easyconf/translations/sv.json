@@ -1,0 +1,205 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "IVT Bosch Rego Local Easyconf",
+        "description": "Hur ska värmepumpen hittas? Sökningen letar först i ditt eget nät: en EMS-ESP-gateway (BBQKees), sedan en Husdata H60/H66. Bosch-molnet erbjuds efteråt, för det som de lokala vägarna saknar.",
+        "menu_options": {
+          "search": "Sök i det lokala nätet (rekommenderas)",
+          "manual": "Ange en adress (EMS-ESP eller Husdata)",
+          "cloud": "Bosch-molnet (K30/K40, IVT Anywhere II)"
+        }
+      },
+      "found": {
+        "title": "Hittat i nätet",
+        "description": "{count} hittade. Kryssa i det som hör till den här värmepumpen; en av varje sort är redan ikryssad. Värden läses från den första i den här ordningen som har dem: EMS-ESP, Husdata, molnet.",
+        "data": {
+          "use": "Använd"
+        }
+      },
+      "nothing_found": {
+        "title": "Inget hittades lokalt",
+        "description": "Ingen EMS-ESP-gateway eller Husdata-modul svarade i Home Assistants nät. Logga in i Bosch-molnet i stället, eller ange en adress.",
+        "menu_options": {
+          "cloud": "Bosch-molnet",
+          "manual": "Ange en adress",
+          "search": "Sök igen"
+        }
+      },
+      "manual": {
+        "title": "Adress",
+        "description": "Adressen till en EMS-ESP-gateway eller en Husdata-modul.",
+        "data": {
+          "host": "Värdnamn eller IP-adress"
+        }
+      },
+      "emsesp_auth": {
+        "title": "Inloggning i EMS-ESP",
+        "description": "För att kunna ändra inställningar behöver gatewayn på {host} inloggningen för en administratör i dess webbgränssnitt (från början admin / admin), eller en åtkomsttoken från Säkerhet → Användare. Lämna allt tomt för att bara läsa.",
+        "data": {
+          "username": "Användarnamn",
+          "password": "Lösenord",
+          "token": "Åtkomsttoken"
+        }
+      },
+      "discovery_confirm": {
+        "title": "Värmepump hittad",
+        "description": "{label}\n\nVill du lägga till den?"
+      },
+      "offer_cloud": {
+        "title": "Bosch-molnet",
+        "description": "De lokala källorna är klara. Om pumpen också har en K30/K40-internetmodul (IVT Anywhere II) kan Bosch-molnet fylla i det de saknar och ta över när de inte svarar. Det kräver inloggning med SingleKey ID.",
+        "menu_options": {
+          "finish": "Klart utan molnet",
+          "cloud": "Lägg till Bosch-molnet"
+        }
+      },
+      "cloud": {
+        "title": "Bosch-molnet",
+        "description": "Vilken inloggningssida? IVT Anywhere II använder Boschs.",
+        "data": {
+          "brand": "Märke"
+        }
+      },
+      "cloud_code": {
+        "title": "Logga in med SingleKey ID",
+        "description": "1. Öppna [den här länken]({url}) i en ny webbläsarflik och logga in.\n2. Efter inloggningen blir sidan tom eller säger att appen inte kan öppnas. Öppna webbläsarens utvecklarverktyg (F12) → Konsol och kopiera raden som börjar \"Failed to launch 'com.bosch...\", eller adressen med `code=` i.\n3. Klistra in den nedan inom en minut; koden fungerar en gång.",
+        "data": {
+          "code": "Kod eller adress"
+        }
+      },
+      "cloud_pick": {
+        "title": "Vilken gateway?",
+        "data": {
+          "device_id": "Gateway"
+        }
+      }
+    },
+    "progress": {
+      "searching": "Söker efter en EMS-ESP-gateway eller en Husdata-modul i det lokala nätet. Det tar några sekunder."
+    },
+    "error": {
+      "cannot_connect": "Inget svarade där som EMS-ESP eller Husdata.",
+      "invalid_auth": "Gatewayn godtog inte inloggningen.",
+      "invalid_code": "Koden godtogs inte. En kod fungerar en gång och bara en kort stund: öppna den nya länken och försök igen.",
+      "kind_present": "Pumpen har redan en källa av den sorten."
+    },
+    "abort": {
+      "already_configured": "Redan inlagd.",
+      "not_supported": "Inte en EMS-ESP-gateway eller Husdata-modul.",
+      "no_gateways": "Kontot har ingen gateway. Slutför parkopplingen av K30/K40 i appen först.",
+      "no_sources": "Inget att lägga till."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "IVT Bosch Rego Local Easyconf",
+        "menu_options": {
+          "settings": "Inställningar",
+          "add_local": "Lägg till en lokal källa",
+          "cloud": "Lägg till eller logga in i Bosch-molnet",
+          "emsesp_login": "Inloggning i EMS-ESP",
+          "remove_source": "Ta bort en källa"
+        }
+      },
+      "settings": {
+        "title": "Inställningar",
+        "data": {
+          "scan_interval": "Avläsning lokalt (s)",
+          "cloud_scan_interval": "Avläsning från molnet (s)",
+          "heating_mode_blocked": "Blocked: ändring av rumsbörvärde",
+          "heating_mode_eco": "Eco: ändring av rumsbörvärde",
+          "heating_mode_boost": "Boost: ändring av rumsbörvärde",
+          "heating_mode_circuits": "Kretsar som värmeläget styr"
+        }
+      },
+      "add_local": {
+        "title": "Lägg till en lokal källa",
+        "data": {
+          "host": "Värdnamn eller IP-adress"
+        }
+      },
+      "emsesp_login": {
+        "title": "Inloggning i EMS-ESP",
+        "description": "Inloggning för att skriva via gatewayn på {host}. Tomt gör den skrivskyddad.",
+        "data": {
+          "username": "Användarnamn",
+          "password": "Lösenord",
+          "token": "Åtkomsttoken"
+        }
+      },
+      "cloud": {
+        "title": "Bosch-molnet",
+        "description": "Vilken inloggningssida? IVT Anywhere II använder Boschs.",
+        "data": {
+          "brand": "Märke"
+        }
+      },
+      "cloud_code": {
+        "title": "Logga in med SingleKey ID",
+        "description": "1. Öppna [den här länken]({url}) i en ny webbläsarflik och logga in.\n2. Efter inloggningen blir sidan tom eller säger att appen inte kan öppnas. Öppna webbläsarens utvecklarverktyg (F12) → Konsol och kopiera raden som börjar \"Failed to launch 'com.bosch...\", eller adressen med `code=` i.\n3. Klistra in den nedan inom en minut; koden fungerar en gång.",
+        "data": {
+          "code": "Kod eller adress"
+        }
+      },
+      "cloud_pick": {
+        "title": "Vilken gateway?",
+        "data": {
+          "device_id": "Gateway"
+        }
+      },
+      "remove_source": {
+        "title": "Ta bort en källa",
+        "data": {
+          "remove": "Ta bort"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Inget svarade där som EMS-ESP eller Husdata.",
+      "invalid_auth": "Gatewayn godtog inte inloggningen.",
+      "invalid_code": "Koden godtogs inte. En kod fungerar en gång och bara en kort stund: öppna den nya länken och försök igen.",
+      "kind_present": "Pumpen har redan en källa av den sorten."
+    },
+    "abort": {
+      "already_configured": "Den källan är redan inlagd.",
+      "no_gateways": "Kontot har ingen gateway.",
+      "last_source": "En värmepump behöver minst en källa.",
+      "no_emsesp": "Pumpen har ingen EMS-ESP-gateway."
+    }
+  },
+  "selector": {
+    "brand": {
+      "options": {
+        "bosch": "Bosch / IVT",
+        "buderus": "Buderus"
+      }
+    }
+  },
+  "entity": {
+    "select": {
+      "heating_mode": {
+        "state": {
+          "blocked": "Spärrad",
+          "eco": "Eko",
+          "normal": "Normal",
+          "boost": "Boost"
+        }
+      }
+    }
+  },
+  "services": {
+    "rescan": {
+      "name": "Sök om värden",
+      "description": "Läs om varje källas lista med värden och ladda om.",
+      "fields": {
+        "entry_id": {
+          "name": "Värmepump",
+          "description": "Installationen; alla om den utelämnas."
+        }
+      }
+    }
+  }
+}

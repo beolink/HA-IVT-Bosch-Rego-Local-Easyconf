@@ -1,0 +1,74 @@
+{
+ "system": {
+  "version": "3.8.6",
+  "platform": "ESP32",
+  "model": "BBQKees Electronics E32V2.2 rev.2.2/2026092"
+ },
+ "network": {
+  "network": "WiFi",
+  "hostname": "ems-esp"
+ },
+ "mqtt": {
+  "enabled": true,
+  "haEnabled": true
+ },
+ "bus": {
+  "busStatus": "connected",
+  "busProtocol": "Buderus"
+ },
+ "settings": {
+  "locale": "en",
+  "readonlyMode": false,
+  "noTokenApi": false,
+  "boolFormat": 1,
+  "enumFormat": 1
+ },
+ "devices": [
+  {
+   "type": "boiler",
+   "name": "CUHP/Enviline, Compress 6000AW, Hybrid 3000-7000iAW, SupraEco/Geo 5xx, WLW196i/WSW196i",
+   "deviceID": "0x08",
+   "productID": 172,
+   "brand": "IVT",
+   "version": "03.03",
+   "entities": 165
+  },
+  {
+   "type": "thermostat",
+   "name": "HMI800.2/Rego 3000, UI800, Logamatic BC400",
+   "deviceID": "0x10",
+   "productID": 253,
+   "brand": "",
+   "version": "47.07",
+   "entities": 124
+  },
+  {
+   "type": "mixer",
+   "name": "MM100/MM100",
+   "deviceID": "0x21",
+   "productID": 160,
+   "brand": "",
+   "version": "24.05",
+   "entities": 8
+  },
+  {
+   "type": "gateway",
+   "name": "K30RF/WiFi module",
+   "deviceID": "0x48",
+   "productID": 252,
+   "brand": "",
+   "version": "11.01",
+   "entities": 0
+  },
+  {
+   "type": "temperaturesensor",
+   "name": "temperaturesensor",
+   "entities": 1
+  },
+  {
+   "type": "analogsensor",
+   "name": "analogsensor",
+   "entities": 3
+  }
+ ]
+}

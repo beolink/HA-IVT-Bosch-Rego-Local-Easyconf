@@ -1,0 +1,205 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "IVT Bosch Rego Local Easyconf",
+        "description": "How should the heat pump be found? The search looks on your own network first: an EMS-ESP gateway (BBQKees), then a Husdata H60/H66. Bosch's cloud is offered afterwards, for what the local ways in lack.",
+        "menu_options": {
+          "search": "Search the local network (recommended)",
+          "manual": "Enter an address (EMS-ESP or Husdata)",
+          "cloud": "Bosch cloud (K30/K40, IVT Anywhere II)"
+        }
+      },
+      "found": {
+        "title": "Found on the network",
+        "description": "{count} found. Tick what belongs to this heat pump; one of each kind is ticked already. Values are read from the first in this order that has them: EMS-ESP, Husdata, the cloud.",
+        "data": {
+          "use": "Use"
+        }
+      },
+      "nothing_found": {
+        "title": "Nothing found locally",
+        "description": "No EMS-ESP gateway or Husdata interface answered on Home Assistant's network. Log in to Bosch's cloud instead, or enter an address.",
+        "menu_options": {
+          "cloud": "Bosch cloud",
+          "manual": "Enter an address",
+          "search": "Search again"
+        }
+      },
+      "manual": {
+        "title": "Address",
+        "description": "The address of an EMS-ESP gateway or a Husdata interface.",
+        "data": {
+          "host": "Host or IP address"
+        }
+      },
+      "emsesp_auth": {
+        "title": "EMS-ESP login",
+        "description": "To change settings the gateway at {host} needs the login of an admin user of its web interface (by default admin / admin), or an access token from Security → Users. Leave everything empty to read only.",
+        "data": {
+          "username": "User name",
+          "password": "Password",
+          "token": "Access token"
+        }
+      },
+      "discovery_confirm": {
+        "title": "Heat pump found",
+        "description": "{label}\n\nSet it up?"
+      },
+      "offer_cloud": {
+        "title": "Bosch cloud",
+        "description": "The local sources are set. If the pump also has a K30/K40 internet module (IVT Anywhere II), Bosch's cloud can fill in what they lack and stand in while they are away. It needs a SingleKey ID login.",
+        "menu_options": {
+          "finish": "Finish without the cloud",
+          "cloud": "Add Bosch's cloud"
+        }
+      },
+      "cloud": {
+        "title": "Bosch cloud",
+        "description": "Which login page? IVT Anywhere II uses Bosch's.",
+        "data": {
+          "brand": "Brand"
+        }
+      },
+      "cloud_code": {
+        "title": "Log in with SingleKey ID",
+        "description": "1. Open [this link]({url}) in a new browser tab and log in.\n2. After the login the page stays blank or says it cannot open the app. Open the browser's developer tools (F12) → Console and copy the line starting \"Failed to launch 'com.bosch...\", or the address with `code=` in it.\n3. Paste it below within a minute; the code is used once.",
+        "data": {
+          "code": "Code or address"
+        }
+      },
+      "cloud_pick": {
+        "title": "Which gateway?",
+        "data": {
+          "device_id": "Gateway"
+        }
+      }
+    },
+    "progress": {
+      "searching": "Searching the local network for an EMS-ESP gateway or a Husdata interface. This takes a few seconds."
+    },
+    "error": {
+      "cannot_connect": "Nothing answered there as EMS-ESP or Husdata.",
+      "invalid_auth": "The gateway refused the login.",
+      "invalid_code": "The code was refused. Codes are single use and expire quickly: open the new link and try again.",
+      "kind_present": "This pump already has a source of that kind."
+    },
+    "abort": {
+      "already_configured": "Already set up.",
+      "not_supported": "Not an EMS-ESP gateway or Husdata interface.",
+      "no_gateways": "The account has no gateway. Finish pairing the K30/K40 in the app first.",
+      "no_sources": "Nothing to set up."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "IVT Bosch Rego Local Easyconf",
+        "menu_options": {
+          "settings": "Settings",
+          "add_local": "Add a local source",
+          "cloud": "Add or log in to Bosch's cloud",
+          "emsesp_login": "EMS-ESP login",
+          "remove_source": "Remove a source"
+        }
+      },
+      "settings": {
+        "title": "Settings",
+        "data": {
+          "scan_interval": "Local poll interval (s)",
+          "cloud_scan_interval": "Cloud poll interval (s)",
+          "heating_mode_blocked": "Blocked: room setpoint change",
+          "heating_mode_eco": "Eco: room setpoint change",
+          "heating_mode_boost": "Boost: room setpoint change",
+          "heating_mode_circuits": "Circuits the heating mode steers"
+        }
+      },
+      "add_local": {
+        "title": "Add a local source",
+        "data": {
+          "host": "Host or IP address"
+        }
+      },
+      "emsesp_login": {
+        "title": "EMS-ESP login",
+        "description": "Login for writing through the gateway at {host}. Empty makes it read only.",
+        "data": {
+          "username": "User name",
+          "password": "Password",
+          "token": "Access token"
+        }
+      },
+      "cloud": {
+        "title": "Bosch cloud",
+        "description": "Which login page? IVT Anywhere II uses Bosch's.",
+        "data": {
+          "brand": "Brand"
+        }
+      },
+      "cloud_code": {
+        "title": "Log in with SingleKey ID",
+        "description": "1. Open [this link]({url}) in a new browser tab and log in.\n2. After the login the page stays blank or says it cannot open the app. Open the browser's developer tools (F12) → Console and copy the line starting \"Failed to launch 'com.bosch...\", or the address with `code=` in it.\n3. Paste it below within a minute; the code is used once.",
+        "data": {
+          "code": "Code or address"
+        }
+      },
+      "cloud_pick": {
+        "title": "Which gateway?",
+        "data": {
+          "device_id": "Gateway"
+        }
+      },
+      "remove_source": {
+        "title": "Remove a source",
+        "data": {
+          "remove": "Remove"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nothing answered there as EMS-ESP or Husdata.",
+      "invalid_auth": "The gateway refused the login.",
+      "invalid_code": "The code was refused. Codes are single use and expire quickly: open the new link and try again.",
+      "kind_present": "This pump already has a source of that kind."
+    },
+    "abort": {
+      "already_configured": "That source is already set up.",
+      "no_gateways": "The account has no gateway.",
+      "last_source": "A heat pump needs at least one source.",
+      "no_emsesp": "This pump has no EMS-ESP gateway."
+    }
+  },
+  "selector": {
+    "brand": {
+      "options": {
+        "bosch": "Bosch / IVT",
+        "buderus": "Buderus"
+      }
+    }
+  },
+  "entity": {
+    "select": {
+      "heating_mode": {
+        "state": {
+          "blocked": "Blocked",
+          "eco": "Eco",
+          "normal": "Normal",
+          "boost": "Boost"
+        }
+      }
+    }
+  },
+  "services": {
+    "rescan": {
+      "name": "Rescan values",
+      "description": "Read every source's list of values again and reload.",
+      "fields": {
+        "entry_id": {
+          "name": "Heat pump",
+          "description": "The installation; all when left out."
+        }
+      }
+    }
+  }
+}

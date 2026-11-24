@@ -1,0 +1,20 @@
+{
+  "domain": "rego_local_easyconf",
+  "name": "IVT Bosch Rego Local Easyconf",
+  "after_dependencies": ["recorder"],
+  "codeowners": ["@beolink"],
+  "config_flow": true,
+  "dependencies": ["frontend", "http", "network", "panel_custom"],
+  "dhcp": [
+    {"hostname": "ems-esp*"}
+  ],
+  "documentation": "https://github.com/beolink/HA-IVT-Bosch-Rego-Local-Easyconf",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/beolink/HA-IVT-Bosch-Rego-Local-Easyconf/issues",
+  "requirements": [],
+  "version": "0.1.0",
+  "zeroconf": [
+    {"type": "_http._tcp.local.", "name": "ems-esp*"}
+  ]
+}

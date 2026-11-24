@@ -1,0 +1,7 @@
+rescan:
+  fields:
+    entry_id:
+      required: false
+      selector:
+        config_entry:
+          integration: rego_local_easyconf

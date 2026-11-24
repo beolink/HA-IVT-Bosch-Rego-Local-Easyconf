@@ -1,0 +1,1620 @@
+{
+"00": {
+"controller": "IVT Rego 600/637",
+"ids": {
+"0001": {
+"name_en": "Radiator return",
+"name_sv": "Radiatorretur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0002": {
+"name_en": "Radiator Forward",
+"name_sv": "Radiatorframledning",
+"scale": 0.1,
+"unit": "°C"
+},
+"0003": {
+"name_en": "Heat carrier Return",
+"name_sv": "Värmebärare retur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0004": {
+"name_en": "Heat carrier Forwrd",
+"name_sv": "Värmebärare fram",
+"scale": 0.1,
+"unit": "°C"
+},
+"0005": {
+"name_en": "Brine in/Evaporator",
+"name_sv": "Köldbärare in / förångare",
+"scale": 0.1,
+"unit": "°C"
+},
+"0006": {
+"name_en": "Brine out/Condenser",
+"name_sv": "Köldbärare ut / kondensor",
+"scale": 0.1,
+"unit": "°C"
+},
+"0007": {
+"name_en": "Outdoor",
+"name_sv": "Utetemperatur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0008": {
+"name_en": "Indoor",
+"name_sv": "Innetemperatur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0009": {
+"name_en": "Warm water 1 / Top",
+"name_sv": "Varmvatten 1 / topp",
+"scale": 0.1,
+"unit": "°C"
+},
+"000A": {
+"name_en": "Warm water 2 / Mid",
+"name_sv": "Varmvatten 2 / mitt",
+"scale": 0.1,
+"unit": "°C"
+},
+"000B": {
+"name_en": "Hot gas / Compr.",
+"name_sv": "Hetgas / kompressor",
+"scale": 0.1,
+"unit": "°C"
+},
+"0107": {
+"name_en": "Heating setpoint",
+"name_sv": "Börvärde värme",
+"scale": 0.1,
+"unit": "°C"
+},
+"0111": {
+"name_en": "Warm water setpoint",
+"name_sv": "Börvärde varmvatten",
+"scale": 0.1,
+"unit": "°C"
+},
+"0203": {
+"max": 29,
+"min": 5,
+"name_en": "Room temp setpoint",
+"name_sv": "Inställd rumstemperatur",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0207": {
+"max": 10,
+"min": -10,
+"name_en": "Heat set 3 Parallel",
+"name_sv": "Parallellförskjutning",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0208": {
+"max": 60,
+"min": 20,
+"name_en": "Warm water stop temp",
+"name_sv": "Varmvatten stopptemp",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"020A": {
+"max": 30,
+"min": 0,
+"name_en": "Summer mode",
+"name_sv": "Sommarläge",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"020B": {
+"max": 15,
+"min": 2,
+"name_en": "Warm Water Difference",
+"name_sv": "Varmvatten differens",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"1215": {
+"max": 1,
+"min": 0,
+"name_en": "Elect. Heater switch",
+"name_sv": "Elpatron på/av",
+"scale": 1,
+"writable": true
+},
+"1233": {
+"max": 1,
+"min": 0,
+"name_en": "External control",
+"name_sv": "Extern styrning (EXT)",
+"scale": 1,
+"writable": true
+},
+"12F2": {
+"max": 1,
+"min": 0,
+"name_en": "Alarm Reset",
+"name_sv": "Larmåterställning",
+"scale": 1,
+"writable": true
+},
+"1A01": {
+"name_en": "Compressor",
+"name_sv": "Kompressor",
+"scale": 1
+},
+"1A02": {
+"name_en": "Add heat step 1",
+"name_sv": "Tillsats steg 1",
+"scale": 1
+},
+"1A03": {
+"name_en": "Add heat step 2",
+"name_sv": "Tillsats steg 2",
+"scale": 1
+},
+"1A04": {
+"name_en": "Pump Cold circuit",
+"name_sv": "Köldbärarpump",
+"scale": 1
+},
+"1A05": {
+"name_en": "Pump Heat circuit",
+"name_sv": "Värmebärarpump",
+"scale": 1
+},
+"1A06": {
+"name_en": "Pump Radiator",
+"name_sv": "Radiatorpump",
+"scale": 1
+},
+"1A07": {
+"name_en": "Switch valve 1",
+"name_sv": "Växelventil 1",
+"scale": 1
+},
+"1A20": {
+"name_en": "Alarm",
+"name_sv": "Larm",
+"scale": 1
+},
+"2204": {
+"max": 10,
+"min": 0,
+"name_en": "Room sensor influence",
+"name_sv": "Rumsgivarpåverkan",
+"scale": 1,
+"writable": true
+},
+"2205": {
+"max": 10,
+"min": 0,
+"name_en": "Heat set 1, CurveL",
+"name_sv": "Värmekurva",
+"scale": 0.1,
+"writable": true
+},
+"2210": {
+"max": 30,
+"min": 0,
+"name_en": "Holiday mode",
+"name_sv": "Semesterläge",
+"scale": 1,
+"unit": "d",
+"writable": true
+},
+"3104": {
+"name_en": "Add heat status",
+"name_sv": "Tillsatsvärme",
+"scale": 0.1,
+"unit": "%"
+},
+"6C55": {
+"name_en": "Compr. cons. heating",
+"name_sv": "Kompressor drifttid värme",
+"scale": 1,
+"unit": "h"
+},
+"6C56": {
+"name_en": "Compr. cons. hotwat",
+"name_sv": "Kompressor drifttid varmvatten",
+"scale": 1,
+"unit": "h"
+},
+"6C58": {
+"name_en": "Aux cons. heating",
+"name_sv": "Tillsats drifttid värme",
+"scale": 1,
+"unit": "h"
+},
+"6C59": {
+"name_en": "Aux cons. hot water",
+"name_sv": "Tillsats drifttid varmvatten",
+"scale": 1,
+"unit": "h"
+},
+"7209": {
+"max": 1440,
+"min": 0,
+"name_en": "Extra Warm Water stat",
+"name_sv": "Extra varmvatten",
+"scale": 1,
+"unit": "min",
+"writable": true
+},
+"B21B": {
+"max": 4,
+"min": 1,
+"name_en": "Elect. Heater Max powr",
+"name_sv": "Elpatron maxeffekt",
+"options": [
+1,
+2,
+4
+],
+"scale": 1,
+"writable": true
+},
+"BA91": {
+"name_en": "Alarm Code",
+"name_sv": "Larmkod",
+"scale": 1
+}
+}
+},
+"05": {
+"controller": "IVT Rego 400/411/412",
+"ids": {
+"0002": {
+"name_en": "Radiator Forward",
+"name_sv": "Radiatorframledning",
+"scale": 0.1,
+"unit": "°C"
+},
+"0003": {
+"name_en": "Heat carrier Return",
+"name_sv": "Värmebärare retur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0004": {
+"name_en": "Heat carrier Forwrd",
+"name_sv": "Värmebärare fram",
+"scale": 0.1,
+"unit": "°C"
+},
+"0007": {
+"name_en": "Outdoor",
+"name_sv": "Utetemperatur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0008": {
+"name_en": "Indoor",
+"name_sv": "Innetemperatur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0009": {
+"name_en": "Warm water 1 / Top",
+"name_sv": "Varmvatten 1 / topp",
+"scale": 0.1,
+"unit": "°C"
+},
+"000A": {
+"name_en": "Warm water 2 / Mid",
+"name_sv": "Varmvatten 2 / mitt",
+"scale": 0.1,
+"unit": "°C"
+},
+"000B": {
+"name_en": "Hot gas / Compr.",
+"name_sv": "Hetgas / kompressor",
+"scale": 0.1,
+"unit": "°C"
+},
+"0107": {
+"name_en": "Heating setpoint",
+"name_sv": "Börvärde värme",
+"scale": 0.1,
+"unit": "°C"
+},
+"0111": {
+"name_en": "Warm water setpoint",
+"name_sv": "Börvärde varmvatten",
+"scale": 0.1,
+"unit": "°C"
+},
+"1A01": {
+"name_en": "Compressor",
+"name_sv": "Kompressor",
+"scale": 1
+},
+"1A05": {
+"name_en": "Pump Heat circuit",
+"name_sv": "Värmebärarpump",
+"scale": 1
+},
+"1A06": {
+"name_en": "Pump Radiator",
+"name_sv": "Radiatorpump",
+"scale": 1
+},
+"1A09": {
+"name_en": "Fan",
+"name_sv": "Fläkt",
+"scale": 1
+},
+"1A0A": {
+"name_en": "High Pressostat",
+"name_sv": "Högtryckspressostat",
+"scale": 1
+},
+"1A0B": {
+"name_en": "Low Pressostat",
+"name_sv": "Lågtryckspressostat",
+"scale": 1
+},
+"1A0E": {
+"name_en": "Shunt open",
+"name_sv": "Shunt öppnar",
+"scale": 1
+},
+"1A0F": {
+"name_en": "Shunt close",
+"name_sv": "Shunt stänger",
+"scale": 1
+},
+"3104": {
+"name_en": "Add heat status",
+"name_sv": "Tillsatsvärme",
+"scale": 0.1,
+"unit": "%"
+}
+}
+},
+"10": {
+"controller": "IVT Rego 2000/3000/3100, Bosch Pro Control 600/800 (EMS)",
+"ids": {
+"0002": {
+"name_en": "Radiator Forward",
+"name_sv": "Radiatorframledning",
+"scale": 0.1,
+"unit": "°C"
+},
+"0003": {
+"name_en": "Heat carrier Return",
+"name_sv": "Värmebärare retur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0004": {
+"name_en": "Heat carrier Forwrd",
+"name_sv": "Värmebärare fram",
+"scale": 0.1,
+"unit": "°C"
+},
+"0005": {
+"name_en": "Brine in/Evaporator",
+"name_sv": "Köldbärare in / förångare",
+"scale": 0.1,
+"unit": "°C"
+},
+"0006": {
+"name_en": "Brine out/Condenser",
+"name_sv": "Köldbärare ut / kondensor",
+"scale": 0.1,
+"unit": "°C"
+},
+"0007": {
+"name_en": "Outdoor",
+"name_sv": "Utetemperatur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0008": {
+"name_en": "Indoor",
+"name_sv": "Innetemperatur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0009": {
+"name_en": "Warm water 1 / Top",
+"name_sv": "Varmvatten 1 / topp",
+"scale": 0.1,
+"unit": "°C"
+},
+"000A": {
+"name_en": "Warm water 2 / Mid",
+"name_sv": "Varmvatten 2 / mitt",
+"scale": 0.1,
+"unit": "°C"
+},
+"000B": {
+"name_en": "Hot gas / Compr.",
+"name_sv": "Hetgas / kompressor",
+"scale": 0.1,
+"unit": "°C"
+},
+"000C": {
+"name_en": "Suction gas",
+"name_sv": "Suggas",
+"scale": 0.1,
+"unit": "°C"
+},
+"000E": {
+"name_en": "Air intake",
+"name_sv": "Luftintag",
+"scale": 0.1,
+"unit": "°C"
+},
+"0011": {
+"name_en": "Pool",
+"name_sv": "Pool",
+"scale": 0.1,
+"unit": "°C"
+},
+"0014": {
+"name_en": "Compressor",
+"name_sv": "Kompressortemperatur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0020": {
+"name_en": "Radiator Forward 2",
+"name_sv": "Radiatorframledning 2",
+"scale": 0.1,
+"unit": "°C"
+},
+"0021": {
+"name_en": "Indoor 2",
+"name_sv": "Innetemperatur 2",
+"scale": 0.1,
+"unit": "°C"
+},
+"0107": {
+"name_en": "Heating setpoint",
+"name_sv": "Börvärde värme",
+"scale": 0.1,
+"unit": "°C"
+},
+"0111": {
+"name_en": "Warm water setpoint",
+"name_sv": "Börvärde varmvatten",
+"scale": 0.1,
+"unit": "°C"
+},
+"0203": {
+"min": 5,
+"name_en": "Room temp setpoint",
+"name_sv": "Inställd rumstemperatur",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0205": {
+"name_en": "Heat set 1, CurveL",
+"name_sv": "Värmekurva basvärde",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0206": {
+"name_en": "Heat set 2, CurveR",
+"name_sv": "Värmekurva slutpunkt",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"020A": {
+"name_en": "Summer mode",
+"name_sv": "Sommarläge",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"020C": {
+"name_en": "Program room temp",
+"name_sv": "Rumstemperatur programläge",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"020E": {
+"name_en": "Heat set 4, DesignR",
+"name_sv": "Värmekurva slutpunkt golv",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0214": {
+"name_en": "Cooling temp setpoint",
+"name_sv": "Börvärde kyla",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0220": {
+"name_en": "Room temp setpoint 2",
+"name_sv": "Inställd rumstemperatur 2",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0222": {
+"name_en": "Heat set 1, CurveL 2",
+"name_sv": "Värmekurva basvärde 2",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0223": {
+"name_en": "Heat set 2, CurveR 2",
+"name_sv": "Värmekurva slutpunkt 2",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"02F1": {
+"name_en": "Room Temp Controller",
+"name_sv": "Emulerad rumsgivare temperatur",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0A10": {
+"name_en": "Drain Pan",
+"name_sv": "Droppskål",
+"scale": 0.1,
+"unit": "°C"
+},
+"1231": {
+"max": 1,
+"min": 0,
+"name_en": "Extra Warm Water stat",
+"name_sv": "Extra varmvatten",
+"scale": 1,
+"writable": true
+},
+"1A01": {
+"name_en": "Compressor",
+"name_sv": "Kompressor",
+"scale": 1
+},
+"1A04": {
+"name_en": "Pump Cold circuit",
+"name_sv": "Köldbärarpump",
+"scale": 1
+},
+"1A05": {
+"name_en": "Pump Heat circuit",
+"name_sv": "Värmebärarpump",
+"scale": 1
+},
+"1A06": {
+"name_en": "Pump Radiator",
+"name_sv": "Radiatorpump",
+"scale": 1
+},
+"1A07": {
+"name_en": "Switch valve 1",
+"name_sv": "Växelventil 1",
+"scale": 1
+},
+"1A09": {
+"name_en": "Fan",
+"name_sv": "Fläkt",
+"scale": 1
+},
+"1A20": {
+"name_en": "Alarm",
+"name_sv": "Larm",
+"scale": 1
+},
+"2201": {
+"name_en": "Operating mode 1",
+"name_sv": "Driftläge 1",
+"options": [
+0,
+1,
+2
+],
+"scale": 1,
+"writable": true
+},
+"2202": {
+"name_en": "Operating mode 2",
+"name_sv": "Driftläge 2 (värme/kyla)",
+"options": [
+0,
+1,
+2,
+3
+],
+"scale": 1,
+"writable": true
+},
+"2204": {
+"name_en": "Room sensor influence",
+"name_sv": "Rumsgivarpåverkan",
+"writable": true
+},
+"2213": {
+"name_en": "Warm Water program",
+"name_sv": "Varmvattenprogram",
+"options": [
+0,
+1,
+2,
+4,
+5
+],
+"scale": 1,
+"writable": true
+},
+"2215": {
+"name_en": "Elec. Heater",
+"name_sv": "Elpatron tillåten",
+"options": [
+0,
+1
+],
+"scale": 1,
+"writable": true
+},
+"2227": {
+"name_en": "Limit Comressor",
+"name_sv": "Effektgräns kompressor",
+"options": [
+0,
+1,
+3
+],
+"scale": 1,
+"writable": true
+},
+"2228": {
+"name_en": "Limit Auxiliary Heat",
+"name_sv": "Effektgräns tillsats",
+"options": [
+0,
+1,
+3,
+4,
+5
+],
+"scale": 1,
+"writable": true
+},
+"2229": {
+"name_en": "Pool temp setpoint",
+"name_sv": "Börvärde pool",
+"writable": true
+},
+"2233": {
+"max": 1,
+"min": 0,
+"name_en": "External control",
+"name_sv": "Extern styrning 1",
+"scale": 1,
+"writable": true
+},
+"2234": {
+"max": 1,
+"min": 0,
+"name_en": "External control 2",
+"name_sv": "Extern styrning 2",
+"scale": 1,
+"writable": true
+},
+"2235": {
+"max": 1,
+"min": 0,
+"name_en": "External control 3",
+"name_sv": "Extern styrning 3",
+"scale": 1,
+"writable": true
+},
+"2236": {
+"max": 1,
+"min": 0,
+"name_en": "External control 4",
+"name_sv": "Extern styrning 4",
+"scale": 1,
+"writable": true
+},
+"2A08": {
+"name_en": "Switch valve 2",
+"name_sv": "Växelventil 2 (4-vägsventil)",
+"scale": 1
+},
+"2C61": {
+"name_en": "Compr. Starts",
+"name_sv": "Kompressorstarter",
+"scale": 1
+},
+"3024": {
+"name_en": "Humidity",
+"name_sv": "Luftfuktighet",
+"scale": 0.1,
+"unit": "%"
+},
+"3104": {
+"name_en": "Add heat status",
+"name_sv": "Tillsatsvärme",
+"scale": 0.1,
+"unit": "%"
+},
+"3108": {
+"name_en": "Compressor speed",
+"name_sv": "Kompressorvarvtal",
+"scale": 0.1,
+"unit": "%"
+},
+"3109": {
+"name_en": "Circ pump speed",
+"name_sv": "Cirkulationspump varvtal",
+"scale": 0.1,
+"unit": "%"
+},
+"3110": {
+"name_en": "Brine pump speed",
+"name_sv": "Köldbärarpump varvtal",
+"scale": 0.1,
+"unit": "%"
+},
+"3127": {
+"name_en": "Shunt Pool",
+"name_sv": "Shunt pool",
+"scale": 0.1,
+"unit": "%"
+},
+"3128": {
+"name_en": "Shunt 2",
+"name_sv": "Shunt 2",
+"scale": 0.1,
+"unit": "%"
+},
+"321A": {
+"name_en": "Fan speed",
+"name_sv": "Fläkthastighet",
+"scale": 0.1,
+"unit": "%",
+"writable": true
+},
+"32F5": {
+"name_en": "Room Humid Controller",
+"name_sv": "Emulerad rumsgivare fukt",
+"scale": 0.1,
+"unit": "%",
+"writable": true
+},
+"5C51": {
+"name_en": "Supp energy tot",
+"name_sv": "Avgiven energi totalt",
+"scale": 0.1,
+"unit": "kWh"
+},
+"5C52": {
+"name_en": "Supp energy heating",
+"name_sv": "Avgiven energi värme",
+"scale": 0.1,
+"unit": "kWh"
+},
+"5C53": {
+"name_en": "Supp energy hotwater",
+"name_sv": "Avgiven energi varmvatten",
+"scale": 0.1,
+"unit": "kWh"
+},
+"5C54": {
+"name_en": "Compr. consump. tot",
+"name_sv": "Kompressor förbrukning totalt",
+"scale": 0.1,
+"unit": "kWh"
+},
+"5C55": {
+"name_en": "Compr. cons. heating",
+"name_sv": "Kompressor förbrukning värme",
+"scale": 0.1,
+"unit": "kWh"
+},
+"5C56": {
+"name_en": "Compr. cons. hotwat",
+"name_sv": "Kompressor förbrukning varmvatten",
+"scale": 0.1,
+"unit": "kWh"
+},
+"5C57": {
+"name_en": "Aux consumption tot",
+"name_sv": "Tillsats förbrukning totalt",
+"scale": 0.1,
+"unit": "kWh"
+},
+"5C58": {
+"name_en": "Aux cons. heating",
+"name_sv": "Tillsats förbrukning värme",
+"scale": 0.1,
+"unit": "kWh"
+},
+"5C59": {
+"name_en": "Aux cons. hot water",
+"name_sv": "Tillsats förbrukning varmvatten",
+"scale": 0.1,
+"unit": "kWh"
+},
+"6C50": {
+"name_en": "Total op. time",
+"name_sv": "Total drifttid",
+"scale": 1,
+"unit": "h"
+},
+"6C60": {
+"name_en": "Compr. Runtime",
+"name_sv": "Kompressor drifttid",
+"scale": 1,
+"unit": "h"
+},
+"9112": {
+"name_en": "Compressor power",
+"name_sv": "Kompressoreffekt",
+"scale": 0.1,
+"unit": "kW"
+},
+"BA91": {
+"name_en": "Alarm Code",
+"name_sv": "Larmkod",
+"scale": 1
+},
+"C130": {
+"name_en": "Power draw HP",
+"name_sv": "Effektuttag VP",
+"scale": 1,
+"unit": "W"
+}
+}
+},
+"15": {
+"controller": "IVT Rego 5200 / Regin",
+"ids": {
+"0002": {
+"name_en": "Radiator Forward T0",
+"name_sv": "Radiatorframledning T0",
+"scale": 0.1,
+"unit": "°C"
+},
+"0003": {
+"name_en": "Heat carrier Return TC0",
+"name_sv": "Värmebärare retur TC0",
+"scale": 0.1,
+"unit": "°C"
+},
+"0004": {
+"name_en": "Heat carrier Forwrd TC1",
+"name_sv": "Värmebärare fram TC1",
+"scale": 0.1,
+"unit": "°C"
+},
+"0005": {
+"name_en": "Brine in TB0",
+"name_sv": "Köldbärare in TB0",
+"scale": 0.1,
+"unit": "°C"
+},
+"0006": {
+"name_en": "Brine out TB1",
+"name_sv": "Köldbärare ut TB1",
+"scale": 0.1,
+"unit": "°C"
+},
+"0007": {
+"name_en": "Outdoor TL1",
+"name_sv": "Utetemperatur TL1",
+"scale": 0.1,
+"unit": "°C"
+},
+"0009": {
+"name_en": "Warm water 1 TW1",
+"name_sv": "Varmvatten 1 TW1",
+"scale": 0.1,
+"unit": "°C"
+},
+"000A": {
+"name_en": "Warm water 2 TC2",
+"name_sv": "Varmvatten 2 TC2 (ackumulatortank)",
+"scale": 0.1,
+"unit": "°C"
+},
+"000B": {
+"name_en": "Hot gas TR6",
+"name_sv": "Hetgas TR6",
+"scale": 0.1,
+"unit": "°C"
+},
+"0107": {
+"name_en": "Heating setpoint T0",
+"name_sv": "Börvärde värme T0",
+"scale": 0.1,
+"unit": "°C"
+},
+"0208": {
+"name_en": "Warm water Start temp",
+"name_sv": "Varmvatten starttemp",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"020B": {
+"name_en": "Warm water Stop temp",
+"name_sv": "Varmvatten stopptemp",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"12F2": {
+"name_en": "Alarm Reset",
+"name_sv": "Larmåterställning",
+"scale": 1,
+"writable": true
+},
+"1A01": {
+"name_en": "Compressor",
+"name_sv": "Kompressor",
+"scale": 1
+},
+"1A02": {
+"name_en": "Add heat step 1",
+"name_sv": "Tillsats steg 1",
+"scale": 1
+},
+"1A03": {
+"name_en": "Add heat step 2",
+"name_sv": "Tillsats steg 2",
+"scale": 1
+},
+"1A04": {
+"name_en": "Pump Cold circuit",
+"name_sv": "Köldbärarpump",
+"scale": 1
+},
+"1A05": {
+"name_en": "Pump Heat circuit",
+"name_sv": "Värmebärarpump",
+"scale": 1
+},
+"1A06": {
+"name_en": "Pump Radiator",
+"name_sv": "Radiatorpump",
+"scale": 1
+},
+"1A07": {
+"name_en": "Switch valve 1",
+"name_sv": "Växelventil 1",
+"scale": 1
+},
+"1A20": {
+"name_en": "Alarm",
+"name_sv": "Larm",
+"scale": 1
+},
+"3104": {
+"name_en": "Add heat status",
+"name_sv": "Tillsatsvärme",
+"scale": 0.1,
+"unit": "%"
+},
+"6C55": {
+"name_en": "Compr. cons. heating",
+"name_sv": "Kompressor drifttid värme",
+"scale": 1,
+"unit": "h"
+},
+"6C58": {
+"name_en": "Aux cons. heating",
+"name_sv": "Tillsats drifttid värme",
+"scale": 1,
+"unit": "h"
+}
+}
+},
+"30": {
+"controller": "IVT Rego 1000, Bosch Pro Control 500 (CAN)",
+"ids": {
+"0002": {
+"name_en": "Radiator Forward",
+"name_sv": "Radiatorframledning",
+"scale": 0.1,
+"unit": "°C"
+},
+"0003": {
+"name_en": "Heat carrier Return",
+"name_sv": "Värmebärare retur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0004": {
+"name_en": "Heat carrier Forwrd",
+"name_sv": "Värmebärare fram",
+"scale": 0.1,
+"unit": "°C"
+},
+"0005": {
+"name_en": "Brine in/Evaporator",
+"name_sv": "Köldbärare in / förångare",
+"scale": 0.1,
+"unit": "°C"
+},
+"0006": {
+"name_en": "Brine out/Condenser",
+"name_sv": "Köldbärare ut / kondensor",
+"scale": 0.1,
+"unit": "°C"
+},
+"0007": {
+"name_en": "Outdoor",
+"name_sv": "Utetemperatur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0008": {
+"name_en": "Indoor",
+"name_sv": "Innetemperatur",
+"scale": 0.1,
+"unit": "°C"
+},
+"0009": {
+"name_en": "Warm water 1 / Top",
+"name_sv": "Varmvatten 1 / topp",
+"scale": 0.1,
+"unit": "°C"
+},
+"000B": {
+"name_en": "Hot gas / Compr.",
+"name_sv": "Hetgas / kompressor",
+"scale": 0.1,
+"unit": "°C"
+},
+"000E": {
+"name_en": "Air intake",
+"name_sv": "Luftintag",
+"scale": 0.1,
+"unit": "°C"
+},
+"0011": {
+"name_en": "Pool",
+"name_sv": "Pool",
+"scale": 0.1,
+"unit": "°C"
+},
+"0020": {
+"name_en": "Radiator Forward 2",
+"name_sv": "Radiatorframledning 2",
+"scale": 0.1,
+"unit": "°C"
+},
+"0021": {
+"name_en": "Indoor 2",
+"name_sv": "Innetemperatur 2",
+"scale": 0.1,
+"unit": "°C"
+},
+"0107": {
+"name_en": "Heating setpoint",
+"name_sv": "Börvärde värme",
+"scale": 0.1,
+"unit": "°C"
+},
+"0111": {
+"name_en": "Warm water setpoint",
+"name_sv": "Börvärde varmvatten",
+"scale": 0.1,
+"unit": "°C"
+},
+"0120": {
+"name_en": "Heating setpoint 2",
+"name_sv": "Börvärde värme 2",
+"scale": 0.1,
+"unit": "°C"
+},
+"0203": {
+"name_en": "Room temp setpoint",
+"name_sv": "Inställd rumstemperatur",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0205": {
+"name_en": "Heat set 1, CurveL",
+"name_sv": "Värmekurva vänster",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0206": {
+"name_en": "Heat set 2, CurveR",
+"name_sv": "Värmekurva höger",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0217": {
+"max": 10,
+"min": -10,
+"name_en": "Outdoor temp offset",
+"name_sv": "Utetemp-förskjutning",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0219": {
+"name_en": "Pool temp setpoint",
+"name_sv": "Börvärde pool",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0220": {
+"name_en": "Room temp setpoint 2",
+"name_sv": "Inställd rumstemperatur 2",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0222": {
+"name_en": "Heat set 1, CurveL 2",
+"name_sv": "Värmekurva vänster 2",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0223": {
+"name_en": "Heat set 2, CurveR 2",
+"name_sv": "Värmekurva höger 2",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"02F1": {
+"name_en": "Room Controller",
+"name_sv": "Emulerad rumsgivare",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"1210": {
+"name_en": "Holiday mode",
+"name_sv": "Semesterläge",
+"options": [
+0,
+1
+],
+"scale": 1,
+"writable": true
+},
+"1A01": {
+"name_en": "Compressor",
+"name_sv": "Kompressor",
+"scale": 1
+},
+"1A04": {
+"name_en": "Pump Cold circuit",
+"name_sv": "Köldbärarpump",
+"scale": 1
+},
+"1A05": {
+"name_en": "Pump Heat circuit",
+"name_sv": "Värmebärarpump",
+"scale": 1
+},
+"1A06": {
+"name_en": "Pump Radiator",
+"name_sv": "Radiatorpump",
+"scale": 1
+},
+"1A07": {
+"name_en": "Switch valve 1",
+"name_sv": "Växelventil 1",
+"scale": 1
+},
+"1A08": {
+"name_en": "Switch valve 2",
+"name_sv": "Växelventil 2",
+"scale": 1
+},
+"1A09": {
+"name_en": "Fan",
+"name_sv": "Fläkt",
+"scale": 1
+},
+"1A0A": {
+"name_en": "High Pressostat",
+"name_sv": "Högtryckspressostat",
+"scale": 1
+},
+"1A0B": {
+"name_en": "Low Pressostat",
+"name_sv": "Lågtryckspressostat",
+"scale": 1
+},
+"1A0C": {
+"name_en": "Heating cable",
+"name_sv": "Värmekabel",
+"scale": 1
+},
+"1A0D": {
+"name_en": "Crank Case heater",
+"name_sv": "Vevhusvärmare",
+"scale": 1
+},
+"1A20": {
+"name_en": "Alarm",
+"name_sv": "Larm",
+"scale": 1
+},
+"1A21": {
+"name_en": "Pump Radiator 2",
+"name_sv": "Radiatorpump 2",
+"scale": 1
+},
+"2204": {
+"name_en": "Room sensor influence",
+"name_sv": "Rumsgivarpåverkan",
+"scale": 0.1,
+"writable": true
+},
+"2213": {
+"name_en": "Warm Water program",
+"name_sv": "Varmvattenprogram",
+"options": [
+0,
+1
+],
+"scale": 1,
+"writable": true
+},
+"2216": {
+"name_en": "Warm Water State",
+"name_sv": "Varmvattenläge",
+"options": [
+0,
+1,
+2
+],
+"scale": 1,
+"writable": true
+},
+"221C": {
+"name_en": "Warm Water time program",
+"name_sv": "Varmvatten tidsprogram",
+"options": [
+0,
+1,
+2
+],
+"scale": 1,
+"writable": true
+},
+"2233": {
+"max": 1,
+"min": 0,
+"name_en": "External control",
+"name_sv": "Extern styrning 1",
+"scale": 1,
+"writable": true
+},
+"2234": {
+"max": 1,
+"min": 0,
+"name_en": "External control 2",
+"name_sv": "Extern styrning 2",
+"scale": 1,
+"writable": true
+},
+"22F3": {
+"name_en": "Room Ctrl Dial range",
+"name_sv": "Rumsgivare vredområde",
+"scale": 1,
+"writable": true
+},
+"2F00": {
+"name_en": "Prog ver Major",
+"name_sv": "Programversion huvud",
+"scale": 1
+},
+"2F01": {
+"name_en": "Prog ver Minor",
+"name_sv": "Programversion del",
+"scale": 1
+},
+"2F02": {
+"name_en": "Prog ver Revision",
+"name_sv": "Programversion revision",
+"scale": 1
+},
+"3104": {
+"name_en": "Add heat status",
+"name_sv": "Tillsatsvärme",
+"scale": 0.1,
+"unit": "%"
+},
+"5C52": {
+"name_en": "Supp energy heating",
+"name_sv": "Avgiven energi värme",
+"scale": 0.1,
+"unit": "kWh"
+},
+"5C53": {
+"name_en": "Supp energy hotwater",
+"name_sv": "Avgiven energi varmvatten",
+"scale": 0.1,
+"unit": "kWh"
+},
+"5C55": {
+"name_en": "Compr. cons. heating",
+"name_sv": "Kompressor förbrukning värme",
+"scale": 0.1,
+"unit": "kWh"
+},
+"5C56": {
+"name_en": "Compr. cons. hotwat",
+"name_sv": "Kompressor förbrukning varmvatten",
+"scale": 0.1,
+"unit": "kWh"
+},
+"5C58": {
+"name_en": "Aux cons. heating",
+"name_sv": "Tillsats förbrukning värme",
+"scale": 0.1,
+"unit": "kWh"
+},
+"5C59": {
+"name_en": "Aux cons. hot water",
+"name_sv": "Tillsats förbrukning varmvatten",
+"scale": 0.1,
+"unit": "kWh"
+},
+"6209": {
+"name_en": "Extra Warm water",
+"name_sv": "Extra varmvatten",
+"scale": 1,
+"unit": "h",
+"writable": true
+},
+"B20A": {
+"name_en": "Summer mode",
+"name_sv": "Sommarläge",
+"options": [
+0,
+1,
+2
+],
+"scale": 1,
+"writable": true
+}
+}
+},
+"35": {
+"controller": "IVT Rego 800 (CAN)",
+"ids": {
+"0001": {
+"name_en": "Radiator Return",
+"name_sv": "Radiatorretur GT01",
+"scale": 0.1,
+"unit": "°C"
+},
+"0003": {
+"name_en": "Heat carrier Return",
+"name_sv": "Värmebärare retur GT09",
+"scale": 0.1,
+"unit": "°C"
+},
+"0004": {
+"name_en": "Heat carrier Forwrd",
+"name_sv": "Värmebärare fram GT08",
+"scale": 0.1,
+"unit": "°C"
+},
+"0005": {
+"name_en": "Brine in/Evaporator",
+"name_sv": "Köldbärare in GT11",
+"scale": 0.1,
+"unit": "°C"
+},
+"0006": {
+"name_en": "Brine out/Condenser",
+"name_sv": "Köldbärare ut GT10",
+"scale": 0.1,
+"unit": "°C"
+},
+"0007": {
+"name_en": "Outdoor",
+"name_sv": "Utetemperatur GT02",
+"scale": 0.1,
+"unit": "°C"
+},
+"0008": {
+"name_en": "Indoor",
+"name_sv": "Innetemperatur GT05",
+"scale": 0.1,
+"unit": "°C"
+},
+"0009": {
+"name_en": "Warm water 1 / Top",
+"name_sv": "Varmvatten GT03",
+"scale": 0.1,
+"unit": "°C"
+},
+"000B": {
+"name_en": "Hot gas / Compr.",
+"name_sv": "Hetgas GT06",
+"scale": 0.1,
+"unit": "°C"
+},
+"000E": {
+"name_en": "Air intake",
+"name_sv": "Luftintag GT12",
+"scale": 0.1,
+"unit": "°C"
+},
+"0011": {
+"name_en": "Pool",
+"name_sv": "Pool GT81",
+"scale": 0.1,
+"unit": "°C"
+},
+"0107": {
+"name_en": "Heating setpoint",
+"name_sv": "Börvärde värme",
+"scale": 0.1,
+"unit": "°C"
+},
+"0203": {
+"name_en": "Room temp setpoint",
+"name_sv": "Inställd rumstemperatur",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0205": {
+"name_en": "Heat set 1, CurveL",
+"name_sv": "Värmekurva vänster",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0206": {
+"name_en": "Heat set 2, CurveR",
+"name_sv": "Värmekurva höger",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0208": {
+"max": 80,
+"min": 20,
+"name_en": "Warm Water stop temp",
+"name_sv": "Varmvatten stopptemp",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"0212": {
+"name_en": "Warm water start temp",
+"name_sv": "Varmvatten starttemp",
+"scale": 0.1,
+"unit": "°C",
+"writable": true
+},
+"1A01": {
+"name_en": "Compressor",
+"name_sv": "Kompressor",
+"scale": 1
+},
+"1A04": {
+"name_en": "Pump Cold circuit",
+"name_sv": "Köldbärarpump",
+"scale": 1
+},
+"1A05": {
+"name_en": "Pump Heat circuit",
+"name_sv": "Värmebärarpump",
+"scale": 1
+},
+"1A06": {
+"name_en": "Pump Radiator",
+"name_sv": "Radiatorpump",
+"scale": 1
+},
+"1A07": {
+"name_en": "Switch valve 1",
+"name_sv": "Växelventil 1",
+"scale": 1
+},
+"1A08": {
+"name_en": "Switch valve 2",
+"name_sv": "Växelventil 2",
+"scale": 1
+},
+"1A09": {
+"name_en": "Fan",
+"name_sv": "Fläkt",
+"scale": 1
+},
+"1A0A": {
+"name_en": "High Pressostat",
+"name_sv": "Högtryckspressostat",
+"scale": 1
+},
+"1A0B": {
+"name_en": "Low Pressostat",
+"name_sv": "Lågtryckspressostat",
+"scale": 1
+},
+"1A0C": {
+"name_en": "Heating cable",
+"name_sv": "Värmekabel",
+"scale": 1
+},
+"1A0D": {
+"name_en": "Crank Case heater",
+"name_sv": "Vevhusvärmare",
+"scale": 1
+},
+"1A20": {
+"name_en": "Alarm",
+"name_sv": "Larm",
+"scale": 1
+},
+"2108": {
+"name_en": "Comp Speed",
+"name_sv": "Kompressorvarvtal"
+},
+"2204": {
+"name_en": "Room sensor influence",
+"name_sv": "Rumsgivarpåverkan",
+"writable": true
+},
+"3104": {
+"name_en": "Add heat status",
+"name_sv": "Tillsatsvärme",
+"scale": 0.1,
+"unit": "%"
+},
+"921B": {
+"name_en": "Elect. Heater Max powr",
+"name_sv": "Elpatron maxeffekt",
+"scale": 0.1,
+"unit": "kW",
+"writable": true
+}
+}
+},
+"H66": {
+"controller": "H66 computed (all controllers)",
+"ids": {
+"5FAB": {
+"name_en": "Accumulated consumption",
+"name_sv": "Ackumulerad förbrukning",
+"scale": 0.1,
+"unit": "kWh"
+},
+"CFAA": {
+"name_en": "Power consumption",
+"name_sv": "Effektförbrukning",
+"scale": 1,
+"unit": "W"
+}
+}
+}
+}
