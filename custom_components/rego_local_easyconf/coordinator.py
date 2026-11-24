@@ -21,8 +21,9 @@ import time
 from typing import Any
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.exceptions import HomeAssistantError
+from homeassistant.helpers.event import async_call_later
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .const import DOMAIN, SOURCE_PRIORITY
@@ -30,6 +31,9 @@ from .merge import Binding, bind, first_value, primary_point, priority, write_ta
 from .model import Point, Source, SourceError, SourceInfo, Value, WriteRefused
 
 _LOGGER = logging.getLogger(__name__)
+
+#: Seconds from a write through a lower source to reading the sources above it.
+WRITE_SETTLE_S = 5
 
 
 @dataclass
@@ -228,7 +232,31 @@ class RegoCoordinator(DataUpdateCoordinator[dict[str, Value]]):
                 f"No source that answers can write {role}"
                 + ("" if binding.writable else " (read only)")
             )
-        return await self.async_write_point(point, value)
+        stored = await self.async_write_point(point, value)
+        self._read_others_soon(binding, point)
+        return stored
+
+    def _read_others_soon(self, binding: Binding, written: Point) -> None:
+        """After a write through a lower source, read the ones above it again shortly.
+
+        The role's value is read from the first source that has it, so a write
+        that went through the cloud showed the gateway's old value until the
+        gateway's next poll, up to 30 s later. Measured on the K30: the write
+        reached the EMS bus, and EMS-ESP read it there, within 5 s.
+        """
+        above = {p.source for p in binding.candidates if priority(p.source) < priority(written.source)}
+        if not above:
+            return
+        soon = time.monotonic() + WRITE_SETTLE_S
+        for state in self.sources:
+            if state.kind in above:
+                state.next_due = min(state.next_due, soon)
+
+        @callback
+        def refresh(_now) -> None:
+            self.hass.async_create_task(self.async_request_refresh())
+
+        async_call_later(self.hass, WRITE_SETTLE_S + 1, refresh)
 
     def writable_role(self, role: str) -> bool:
         binding = self.bindings.get(role)
