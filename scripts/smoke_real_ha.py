@@ -240,6 +240,17 @@ async def main() -> int:
             check(fake.entities["thermostat"]["hc1.seltemp"]["value"] == 21, "normal is the comfort temperature")
 
             coordinator = entry.runtime_data
+            # Without its login the gateway is passed over for writes: with no
+            # other source, a write is refused rather than sent and failed.
+            state = coordinator.source("emsesp")
+            state.info.can_write = False
+            try:
+                await hass.services.async_call("select", "select_option", {"entity_id": mode_id, "option": "eco"}, blocking=True)
+                refused = False
+            except Exception:
+                refused = True
+            check(refused, "a read-only gateway is not written to")
+            state.info.can_write = True
             await coordinator.async_refresh()
             check(coordinator.last_update_success, "a poll after the writes")
             print(f"      the stand-in answered 429 {fake.busy} times")

@@ -96,6 +96,11 @@ class RegoCoordinator(DataUpdateCoordinator[dict[str, Value]]):
     def healthy(self) -> dict[str, bool]:
         return {s.kind: s.healthy for s in self.sources}
 
+    @property
+    def can_write(self) -> dict[str, bool]:
+        """Sources that answer and hold what they need to write."""
+        return {s.kind: s.healthy and bool(s.info is None or s.info.can_write) for s in self.sources}
+
     def subscribe(self, uid: str) -> None:
         self._subscribers[uid] = self._subscribers.get(uid, 0) + 1
 
@@ -214,7 +219,10 @@ class RegoCoordinator(DataUpdateCoordinator[dict[str, Value]]):
         binding = self.bindings.get(role)
         if binding is None:
             raise HomeAssistantError(f"This pump has no {role}")
-        point = write_target(binding, self.healthy)
+        # A source that answers but has no login to write with (EMS-ESP read
+        # only) is passed over, so a lower one that can write (the cloud)
+        # takes the write instead of it failing.
+        point = write_target(binding, self.can_write)
         if point is None:
             raise HomeAssistantError(
                 f"No source that answers can write {role}"
