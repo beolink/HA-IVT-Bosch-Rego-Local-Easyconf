@@ -28,6 +28,8 @@ EMS-ESP gateway; the names and roles were written for, and measured on, an IVT.
 
 ## Install
 
+Needs Home Assistant 2026.9 or later (tested on 2026.9.2 and 2026.11.2).
+
 **HACS** → Custom repositories → `https://github.com/beolink/HA-IVT-Bosch-Rego-Local-Easyconf`
 as an Integration → download → restart Home Assistant.
 

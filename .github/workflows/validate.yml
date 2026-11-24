@@ -27,14 +27,21 @@ jobs:
           category: integration
 
   tests:
-    name: tests
+    name: tests and smoke (HA ${{ matrix.ha }})
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        # The floor in hacs.json, the release the smoke was written against,
+        # and the release the house it was built on runs.
+        ha: ["2026.9.2", "2026.11.2"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
-      - run: pip install homeassistant pytest pytest-asyncio
+          python-version: "3.14"
+      - run: pip install "homeassistant==${{ matrix.ha }}" pytest pytest-asyncio
       - run: pytest
       - run: python scripts/smoke_real_ha.py
 
