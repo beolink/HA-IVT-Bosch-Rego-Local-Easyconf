@@ -127,6 +127,30 @@ EMON_FIELDS = ("outputProduced", "compressor", "eheater")
 #: Two-word values that are really on/off.
 BOOL_WORDS = ({"on", "off"}, {"start", "stop"}, {"true", "false"})
 
+#: The cloud's words for a few values, as EMS-ESP says them, so a role reads
+#: and is written the same whichever source answers. The cloud calls the hot
+#: water modes eco, low and high where IVT's display and EMS-ESP say Eco+, Eco
+#: and Comfort (bosch-homecom-hass maps them the same way); its compressor
+#: status says dhw where EMS-ESP says hot water.
+_STATUS = {"dhw": "hot water", "pool_heat": "pool heating", "alarm": "compressor alarm"}
+VALUE_MAPS: dict[str, dict[str, str]] = {
+    "/dhwCircuits/dhw1/operationMode": {"Off": "off", "low": "eco", "high": "comfort", "eco": "eco+", "ownprogram": "auto"},
+    "/heatSources/compressor/status": _STATUS,
+    "/heatSources/Source/eHeater/status": _STATUS,
+}
+
+
+def to_ems(path: str, value: str) -> str:
+    return VALUE_MAPS.get(path, {}).get(value, value)
+
+
+def from_ems(path: str, value: str) -> str:
+    for cloud, ems in VALUE_MAPS.get(path, {}).items():
+        if ems == value:
+            return cloud
+    return value
+
+
 UNITS = {"C": "°C", "K": "K", "kW": "kW", "W": "W", "kWh": "kWh", "bar": "bar", "%": "%", "mins": "min", "min": "min", "s": "s"}
 
 
@@ -275,7 +299,9 @@ def points_from_payload(path: str, payload: dict[str, Any]) -> list[Point]:
             minimum=_num(payload.get("minValue")),
             maximum=_num(payload.get("maxValue")),
             step=_num(payload.get("stepSize")) or (0.5 if unit == "°C" else None),
-            options=options if point_kind in (ENUM, BOOL) else (),
+            options=(
+                tuple(to_ems(path, o) for o in options) if point_kind == ENUM else options if point_kind == BOOL else ()
+            ),
             circuit=circuit,
         )
     ]
@@ -311,6 +337,8 @@ def values_from_payload(path: str, payload: dict[str, Any], points: dict[str, Po
         out[uid] = None if number is None or number in SENTINELS else number
     elif point.kind == BOOL:
         out[uid] = to_bool(value) if str(value).lower() not in ("start", "stop") else str(value).lower() == "start"
+    elif point.kind == ENUM and value is not None:
+        out[uid] = to_ems(path, str(value))
     else:
         out[uid] = coerce(point, value)
     return out
@@ -356,15 +384,21 @@ def write_value(point: Point, value: Value) -> Any:
     if point.kind == NUMBER:
         number = float(value)  # type: ignore[arg-type]
         return int(number) if number.is_integer() else number
-    return str(value)
+    return from_ems(point.key, str(value))
 
 
 class BoschCloudSource:
     kind = SOURCE_CLOUD
     min_interval = 60.0
 
-    def __init__(self, session: aiohttp.ClientSession, conf: dict[str, Any], on_tokens=None) -> None:
+    def __init__(self, session: aiohttp.ClientSession, conf: dict[str, Any], on_tokens=None, borrow=None) -> None:
         self._session = session
+        #: Where the login is borrowed: a callable returning the access token
+        #: another integration keeps renewed (Bosch HomeCom), or None when this
+        #: source holds a login of its own. A refresh token is single use, so
+        #: two integrations cannot both renew one login; borrowing leaves the
+        #: renewing to the one that owns it.
+        self._borrow = borrow
         self.device_id = str(conf[CONF_DEVICE_ID])
         self._access = conf.get(CONF_TOKEN)
         self._refresh = conf.get(CONF_REFRESH_TOKEN)
@@ -375,6 +409,13 @@ class BoschCloudSource:
         self.initial_values: dict[str, Value] = {}
 
     async def _token(self, force: bool = False) -> str:
+        if self._borrow is not None:
+            token = self._borrow()
+            if not token:
+                raise AuthError("Bosch HomeCom has no login for this gateway (removed or disabled?)")
+            if token_expiry(token) - time.time() < 30:
+                raise SourceError("Bosch HomeCom has not renewed its login yet; trying again at the next poll")
+            return token
         async with self._token_lock:
             if not force and self._access and token_expiry(self._access) - time.time() > 300:
                 return self._access

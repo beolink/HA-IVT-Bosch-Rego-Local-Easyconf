@@ -95,6 +95,35 @@ class _CloudLogin:
     _cloud: dict[str, Any] | None
 
     async def async_step_cloud(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+        """Borrow Bosch HomeCom's login where it is installed, or log in."""
+        from .sources import homecom_entries
+
+        if homecom_entries(self.hass):
+            return self.async_show_menu(step_id="cloud", menu_options=["cloud_borrow", "cloud_login"])
+        return await self.async_step_cloud_login()
+
+    async def async_step_cloud_borrow(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+        """Use the login Bosch HomeCom keeps renewed: no code to paste, and both keep working."""
+        from .bosch_cloud import async_gateways
+        from .sources import homecom_token
+
+        token = homecom_token(self.hass)
+        if not token:
+            return await self.async_step_cloud_login()
+        try:
+            gateways = await async_gateways(async_get_clientsession(self.hass), token)
+        except AuthError:
+            return self.async_abort(reason="homecom_login_expired")
+        except SourceError:
+            return self.async_abort(reason="cannot_connect")
+        if not gateways:
+            return self.async_abort(reason="no_gateways")
+        self._cloud = {"borrow": True, "brand": "bosch", "tokens": None, "gateways": gateways}
+        if len(gateways) == 1:
+            return await self._async_cloud_gateway(gateways[0])
+        return await self.async_step_cloud_pick()
+
+    async def async_step_cloud_login(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
         """Which brand's login page: IVT owners use Bosch's."""
         if user_input is not None:
             from .bosch_cloud import new_login
@@ -102,7 +131,7 @@ class _CloudLogin:
             self._cloud = new_login(user_input.get(CONF_BRAND, "bosch"))
             return await self.async_step_cloud_code()
         return self.async_show_form(
-            step_id="cloud",
+            step_id="cloud_login",
             data_schema=vol.Schema(
                 {
                     vol.Required(CONF_BRAND, default="bosch"): selector.SelectSelector(
@@ -166,16 +195,21 @@ class _CloudLogin:
         )
 
     async def _async_cloud_gateway(self, gateway: dict[str, Any]) -> ConfigFlowResult:
-        tokens = self._cloud["tokens"]
         conf = {
             CONF_KIND: SOURCE_CLOUD,
             CONF_DEVICE_ID: str(gateway["deviceId"]),
             "device_type": gateway.get("deviceType"),
             CONF_BRAND: self._cloud["brand"],
-            CONF_TOKEN: tokens["access_token"],
-            CONF_REFRESH_TOKEN: tokens.get("refresh_token"),
             "unique_id": f"cloud-{gateway['deviceId']}",
         }
+        if self._cloud.get("borrow"):
+            from .sources import HOMECOM_DOMAIN
+
+            conf["borrow"] = HOMECOM_DOMAIN
+        else:
+            tokens = self._cloud["tokens"]
+            conf[CONF_TOKEN] = tokens["access_token"]
+            conf[CONF_REFRESH_TOKEN] = tokens.get("refresh_token")
         self._cloud = None
         if _configured(self.hass, SOURCE_CLOUD, device_id=conf[CONF_DEVICE_ID]):
             return self.async_abort(reason="already_configured")

@@ -56,3 +56,40 @@ def test_energy_counters_add_compressor_and_aux():
     values = values_from_payload("/heatSources/emon/totalConsumption", payload, points)
     assert values["cloud:heatpump:/heatSources/emon/totalConsumption#input"] == 5873
     assert values["cloud:heatpump:/heatSources/emon/totalConsumption#outputProduced"] == 28650
+
+
+def test_the_clouds_words_read_as_ems_esp_says_them():
+    payload = {"type": "stringValue", "writeable": 1, "value": "low", "allowedValues": ["Off", "low", "high", "eco"]}
+    path = "/dhwCircuits/dhw1/operationMode"
+    (point,) = points_from_payload(path, payload)
+    # As the real K30 on an IVT Geo 608C answered on 2026-11-24.
+    assert point.options == ("off", "eco", "comfort", "eco+")
+    assert values_from_payload(path, payload, {point.uid: point}) == {point.uid: "eco"}
+    assert write_value(point, "comfort") == "high"
+    assert write_value(point, "eco+") == "eco"
+
+
+def _token_expiring_in(seconds: float) -> str:
+    import base64
+    import json
+    import time
+
+    claims = base64.urlsafe_b64encode(json.dumps({"exp": time.time() + seconds}).encode()).decode().rstrip("=")
+    return f"x.{claims}.y"
+
+
+async def test_a_borrowed_login_is_read_never_renewed():
+    import pytest
+
+    from custom_components.rego_local_easyconf.bosch_cloud import BoschCloudSource
+    from custom_components.rego_local_easyconf.model import AuthError, SourceError
+
+    current = {"token": _token_expiring_in(1800)}
+    source = BoschCloudSource(None, {"device_id": "101372393"}, borrow=lambda: current["token"])
+    assert await source._token() == current["token"]
+    current["token"] = _token_expiring_in(10)
+    with pytest.raises(SourceError):
+        await source._token()
+    current["token"] = None
+    with pytest.raises(AuthError):
+        await source._token()

@@ -55,8 +55,39 @@ def build(hass: HomeAssistant, conf: dict[str, Any], on_tokens=None) -> Source:
     if kind == SOURCE_CLOUD:
         from .bosch_cloud import BoschCloudSource
 
-        return BoschCloudSource(session, conf, on_tokens=on_tokens)
+        borrow = None
+        if conf.get("borrow") == HOMECOM_DOMAIN:
+            device_id = str(conf.get("device_id"))
+            borrow = lambda: homecom_token(hass, device_id)  # noqa: E731
+        return BoschCloudSource(session, conf, on_tokens=on_tokens, borrow=borrow)
     raise ValueError(f"Unknown source {kind}")
+
+
+#: The community integration for Bosch's cloud (serbanb11/bosch-homecom-hass),
+#: whose login this one can borrow.
+HOMECOM_DOMAIN = "bosch_homecom"
+
+
+def homecom_entries(hass: HomeAssistant) -> list:
+    """Bosch HomeCom entries that are switched on and hold an access token."""
+    return [
+        entry
+        for entry in hass.config_entries.async_entries(HOMECOM_DOMAIN)
+        if entry.disabled_by is None and (entry.data or {}).get("token")
+    ]
+
+
+def homecom_token(hass: HomeAssistant, device_id: str | None = None) -> str | None:
+    """The access token Bosch HomeCom keeps renewed, for the entry that has ``device_id``.
+
+    Bosch HomeCom stores both tokens in its entry after every renewal, and
+    lists its gateways as ``<device id>_<type>`` keys under ``devices``.
+    """
+    for entry in homecom_entries(hass):
+        devices = (entry.data or {}).get("devices") or {}
+        if device_id is None or not devices or any(str(k).split("_", 1)[0] == device_id for k in devices):
+            return entry.data.get("token")
+    return None
 
 
 def points_store(hass: HomeAssistant, entry_id: str) -> Store:

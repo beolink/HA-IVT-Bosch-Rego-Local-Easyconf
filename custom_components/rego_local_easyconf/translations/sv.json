@@ -57,9 +57,10 @@
       },
       "cloud": {
         "title": "Bosch-molnet",
-        "description": "Vilken inloggningssida? IVT Anywhere II använder Boschs.",
-        "data": {
-          "brand": "Märke"
+        "description": "Bosch HomeCom är installerat och inloggat. Låna dess inloggning, så behövs ingen kod och båda integrationerna fortsätter fungera (Bosch HomeCom förnyar inloggningen, den här läser bara den gällande). Eller logga in på egen hand.",
+        "menu_options": {
+          "cloud_borrow": "Låna Bosch HomeComs inloggning",
+          "cloud_login": "Logga in med SingleKey ID"
         }
       },
       "cloud_code": {
@@ -73,6 +74,13 @@
         "title": "Vilken gateway?",
         "data": {
           "device_id": "Gateway"
+        }
+      },
+      "cloud_login": {
+        "title": "Bosch-molnet",
+        "description": "Vilken inloggningssida? IVT Anywhere II använder Boschs.",
+        "data": {
+          "brand": "Märke"
         }
       }
     },
@@ -89,7 +97,9 @@
       "already_configured": "Redan inlagd.",
       "not_supported": "Inte en EMS-ESP-gateway eller Husdata-modul.",
       "no_gateways": "Kontot har ingen gateway. Slutför parkopplingen av K30/K40 i appen först.",
-      "no_sources": "Inget att lägga till."
+      "no_sources": "Inget att lägga till.",
+      "homecom_login_expired": "Bosch HomeComs inloggning har gått ut. Logga in i Bosch HomeCom igen, eller logga in här på egen hand.",
+      "cannot_connect": "Bosch-molnet svarade inte."
     }
   },
   "options": {
@@ -132,9 +142,10 @@
       },
       "cloud": {
         "title": "Bosch-molnet",
-        "description": "Vilken inloggningssida? IVT Anywhere II använder Boschs.",
-        "data": {
-          "brand": "Märke"
+        "description": "Bosch HomeCom är installerat och inloggat. Låna dess inloggning, så behövs ingen kod och båda integrationerna fortsätter fungera (Bosch HomeCom förnyar inloggningen, den här läser bara den gällande). Eller logga in på egen hand.",
+        "menu_options": {
+          "cloud_borrow": "Låna Bosch HomeComs inloggning",
+          "cloud_login": "Logga in med SingleKey ID"
         }
       },
       "cloud_code": {
@@ -155,6 +166,13 @@
         "data": {
           "remove": "Ta bort"
         }
+      },
+      "cloud_login": {
+        "title": "Bosch-molnet",
+        "description": "Vilken inloggningssida? IVT Anywhere II använder Boschs.",
+        "data": {
+          "brand": "Märke"
+        }
       }
     },
     "error": {
@@ -167,7 +185,9 @@
       "already_configured": "Den källan är redan inlagd.",
       "no_gateways": "Kontot har ingen gateway.",
       "last_source": "En värmepump behöver minst en källa.",
-      "no_emsesp": "Pumpen har ingen EMS-ESP-gateway."
+      "no_emsesp": "Pumpen har ingen EMS-ESP-gateway.",
+      "homecom_login_expired": "Bosch HomeComs inloggning har gått ut. Logga in i Bosch HomeCom igen, eller logga in här på egen hand.",
+      "cannot_connect": "Bosch-molnet svarade inte."
     }
   },
   "selector": {

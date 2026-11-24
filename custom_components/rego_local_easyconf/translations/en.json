@@ -57,9 +57,10 @@
       },
       "cloud": {
         "title": "Bosch cloud",
-        "description": "Which login page? IVT Anywhere II uses Bosch's.",
-        "data": {
-          "brand": "Brand"
+        "description": "Bosch HomeCom is installed and logged in. Borrow its login: no code to paste, and both integrations keep working (Bosch HomeCom renews the login, this one only reads the current one). Or log in on its own.",
+        "menu_options": {
+          "cloud_borrow": "Borrow Bosch HomeCom's login",
+          "cloud_login": "Log in with SingleKey ID"
         }
       },
       "cloud_code": {
@@ -73,6 +74,13 @@
         "title": "Which gateway?",
         "data": {
           "device_id": "Gateway"
+        }
+      },
+      "cloud_login": {
+        "title": "Bosch cloud",
+        "description": "Which login page? IVT Anywhere II uses Bosch's.",
+        "data": {
+          "brand": "Brand"
         }
       }
     },
@@ -89,7 +97,9 @@
       "already_configured": "Already set up.",
       "not_supported": "Not an EMS-ESP gateway or Husdata interface.",
       "no_gateways": "The account has no gateway. Finish pairing the K30/K40 in the app first.",
-      "no_sources": "Nothing to set up."
+      "no_sources": "Nothing to set up.",
+      "homecom_login_expired": "Bosch HomeCom's login has expired. Log in to Bosch HomeCom again, or log in here on its own.",
+      "cannot_connect": "Bosch's cloud did not answer."
     }
   },
   "options": {
@@ -132,9 +142,10 @@
       },
       "cloud": {
         "title": "Bosch cloud",
-        "description": "Which login page? IVT Anywhere II uses Bosch's.",
-        "data": {
-          "brand": "Brand"
+        "description": "Bosch HomeCom is installed and logged in. Borrow its login: no code to paste, and both integrations keep working (Bosch HomeCom renews the login, this one only reads the current one). Or log in on its own.",
+        "menu_options": {
+          "cloud_borrow": "Borrow Bosch HomeCom's login",
+          "cloud_login": "Log in with SingleKey ID"
         }
       },
       "cloud_code": {
@@ -155,6 +166,13 @@
         "data": {
           "remove": "Remove"
         }
+      },
+      "cloud_login": {
+        "title": "Bosch cloud",
+        "description": "Which login page? IVT Anywhere II uses Bosch's.",
+        "data": {
+          "brand": "Brand"
+        }
       }
     },
     "error": {
@@ -167,7 +185,9 @@
       "already_configured": "That source is already set up.",
       "no_gateways": "The account has no gateway.",
       "last_source": "A heat pump needs at least one source.",
-      "no_emsesp": "This pump has no EMS-ESP gateway."
+      "no_emsesp": "This pump has no EMS-ESP gateway.",
+      "homecom_login_expired": "Bosch HomeCom's login has expired. Log in to Bosch HomeCom again, or log in here on its own.",
+      "cannot_connect": "Bosch's cloud did not answer."
     }
   },
   "selector": {
