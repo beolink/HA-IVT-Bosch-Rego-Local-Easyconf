@@ -85,6 +85,7 @@ const TEXT = {
     graphEnergy: "Energi per dygn",
     graphCop: "Värmefaktor per dygn",
     noControls: "Inget styrbart värde är påslaget.",
+    graphsWaiting: "Graferna laddas…",
     explain: "Förklaring",
     source: "Källa",
     sources: {
@@ -128,6 +129,7 @@ const TEXT = {
     graphEnergy: "Energy per day",
     graphCop: "Coefficient of performance, daily",
     noControls: "No writable value is switched on.",
+    graphsWaiting: "Loading the graphs…",
     explain: "Explanation",
     source: "Source",
     sources: {
@@ -589,6 +591,50 @@ function ids(rows) {
  *  has to be built again once they arrive, or it keeps its missing ⓘ. */
 function structureOf(rows) {
   return rows.map((row) => row.entityId + (row.description ? "!" : "")).join(",");
+}
+
+/** Home Assistant's card helpers, which build its own history and statistics
+ *  cards. `window.loadCardHelpers` is not in the frontend's start-up code: it
+ *  appears once a dashboard (Lovelace) has been loaded in the tab. Opening
+ *  this page straight from the sidebar or a bookmark, as on a fresh tab, finds
+ *  it missing - measured on Home Assistant 2026.11.2, whose app, core and
+ *  custom-panel bundles do not define it - and the graphs stayed empty. So the
+ *  Lovelace panel is loaded here the way custom cards do it, through the
+ *  frontend's panel resolver, and the helpers are asked for again. Anything
+ *  failing leaves null, and the page works on without graphs. */
+let helpersPromise = null;
+async function cardHelpers() {
+  if (typeof window === "undefined") return null;
+  if (!window.loadCardHelpers) {
+    try {
+      await loadLovelace();
+    } catch (err) {
+      // The resolver's private shape changed; the next update tries again.
+    }
+  }
+  if (!window.loadCardHelpers) return null;
+  if (!helpersPromise) {
+    helpersPromise = window.loadCardHelpers().catch(() => {
+      helpersPromise = null;
+      return null;
+    });
+  }
+  return helpersPromise;
+}
+
+async function loadLovelace() {
+  if (!customElements.get("partial-panel-resolver")) {
+    await Promise.race([
+      customElements.whenDefined("partial-panel-resolver"),
+      new Promise((resolve) => setTimeout(resolve, 3000)),
+    ]);
+  }
+  const Resolver = customElements.get("partial-panel-resolver");
+  if (!Resolver) return;
+  const resolver = document.createElement("partial-panel-resolver");
+  resolver.hass = { panels: [{ url_path: "rego-easyconf-tmp", component_name: "lovelace" }] };
+  resolver._updateRoutes();
+  await resolver.routerOptions.routes["rego-easyconf-tmp"].load();
 }
 
 /** A graph as a Home Assistant card configuration. Counters are drawn from the
@@ -1138,8 +1184,17 @@ if (typeof customElements !== "undefined") {
         for (const card of this.overviewCards) card.hass = this.hass;
         return;
       }
-      this.overviewGraphSignature = structure;
-      this.overviewCards = await this.fillGraphs(this.overviewGraphs, temps, text);
+      if (this.overviewGraphsBusy) return;
+      this.overviewGraphsBusy = true;
+      try {
+        const cards = await this.fillGraphs(this.overviewGraphs, temps, text);
+        this.overviewCards = cards || [];
+        // Remembered only once the cards exist: a try without Home Assistant's
+        // card helpers is tried again at the next update, not given up on.
+        if (cards) this.overviewGraphSignature = structure;
+      } finally {
+        this.overviewGraphsBusy = false;
+      }
     }
 
     /* ----------------------------------------------------------- controls */
@@ -1354,23 +1409,35 @@ if (typeof customElements !== "undefined") {
         for (const card of this.graphCards) card.hass = this.hass;
         return;
       }
-      this.graphSignature = structure;
-      this.graphCards = await this.fillGraphs(this.graphsBody, graphs, text);
+      if (this.graphsBusy) return;
+      this.graphsBusy = true;
+      try {
+        const cards = await this.fillGraphs(this.graphsBody, graphs, text);
+        this.graphCards = cards || [];
+        if (cards) this.graphSignature = structure;
+      } finally {
+        this.graphsBusy = false;
+      }
     }
 
     /** Put Home Assistant's own history and statistics cards in a container.
      *  They are reached the way every custom card reaches them; if that ever
      *  fails the graphs are left out, since the page is useful without them. */
     async fillGraphs(container, graphs, text) {
-      container.replaceChildren();
-      if (!graphs.length) return [];
-      let helpers = null;
-      try {
-        helpers = window.loadCardHelpers ? await window.loadCardHelpers() : null;
-      } catch (err) {
-        helpers = null;
+      if (!graphs.length) {
+        container.replaceChildren();
+        return [];
       }
-      if (!helpers) return [];
+      const helpers = await cardHelpers();
+      if (!helpers) {
+        // null, not []: the caller tries again at the next update.
+        const waiting = document.createElement("div");
+        waiting.className = "empty";
+        waiting.textContent = text.graphsWaiting;
+        container.replaceChildren(waiting);
+        return null;
+      }
+      container.replaceChildren();
       // Two columns filled by hand rather than by the grid: a grid row is as
       // tall as its tallest card, which would leave a day of temperatures
       // stretched out beside a taller graph instead of letting the next one up.
